@@ -1,0 +1,569 @@
+/* ============================================================
+   CSS Custom Properties — Light Theme (default)
+   ============================================================ */
+:root {
+  /* Colors */
+  --color-bg: #f5f5f5;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f0f0f0;
+  --color-border: #d0d0d0;
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #555555;
+  --color-text-muted: #888888;
+  --color-accent: #4a6cf7;
+  --color-accent-hover: #3a5ce6;
+  --color-accent-text: #ffffff;
+  --color-danger: #d9534f;
+  --color-danger-hover: #c9302c;
+  --color-success: #5cb85c;
+  --color-error-bg: #fff3f3;
+  --color-error-text: #c0392b;
+  --color-banner-bg: #fff3cd;
+  --color-banner-text: #856404;
+  --color-banner-border: #ffc107;
+  --color-completed-text: #888888;
+
+  /* Typography */
+  --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-size-base: 1rem;
+  --font-size-sm: 0.875rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+  --font-size-3xl: 3rem;
+  --line-height-base: 1.5;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+
+  /* Borders & Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --border-width: 1px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.10);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+}
+
+/* ============================================================
+   Dark Theme Overrides
+   Applied via [data-theme="dark"] on <html>
+   ============================================================ */
+[data-theme="dark"] {
+  --color-bg: #121212;
+  --color-surface: #1e1e1e;
+  --color-surface-alt: #2a2a2a;
+  --color-border: #3a3a3a;
+  --color-text-primary: #e8e8e8;
+  --color-text-secondary: #aaaaaa;
+  --color-text-muted: #666666;
+  --color-accent: #6b8afb;
+  --color-accent-hover: #5a79ea;
+  --color-accent-text: #ffffff;
+  --color-danger: #e57373;
+  --color-danger-hover: #d32f2f;
+  --color-success: #81c784;
+  --color-error-bg: #2c1a1a;
+  --color-error-text: #ef9a9a;
+  --color-banner-bg: #3a2e00;
+  --color-banner-text: #ffd54f;
+  --color-banner-border: #f9a825;
+  --color-completed-text: #555555;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* ============================================================
+   Reset & Base
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  min-height: 100vh;
+  transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+/* Screen-reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ============================================================
+   Storage Unavailable Banner
+   ============================================================ */
+.storage-banner {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: var(--space-3) var(--space-6);
+  background-color: var(--color-banner-bg);
+  color: var(--color-banner-text);
+  border-bottom: var(--border-width) solid var(--color-banner-border);
+  font-size: var(--font-size-sm);
+  text-align: center;
+  font-weight: 500;
+}
+
+/* ============================================================
+   App Header
+   ============================================================ */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-6);
+  background-color: var(--color-surface);
+  border-bottom: var(--border-width) solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.app-title {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+}
+
+/* ============================================================
+   Theme Toggle
+   ============================================================ */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  background-color: var(--color-surface-alt);
+  color: var(--color-text-primary);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-family: var(--font-family);
+  cursor: pointer;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.theme-toggle:hover {
+  background-color: var(--color-border);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   Dashboard Grid Layout
+   ============================================================ */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-6);
+  padding: var(--space-6);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ============================================================
+   Widget Base
+   ============================================================ */
+.widget {
+  background-color: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  transition: background-color var(--transition-base), border-color var(--transition-base);
+}
+
+.widget__title {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: var(--font-size-sm);
+  border-bottom: var(--border-width) solid var(--color-border);
+  padding-bottom: var(--space-3);
+}
+
+/* ============================================================
+   Greeting Widget
+   ============================================================ */
+.greeting__time {
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.greeting__date {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+}
+
+.greeting__message {
+  font-size: var(--font-size-xl);
+  font-weight: 500;
+  color: var(--color-text-primary);
+  min-height: 1.8rem;
+}
+
+.greeting__name-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.greeting__name-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.greeting__name-row {
+  display: flex;
+  gap: var(--space-2);
+}
+
+/* ============================================================
+   Focus Timer Widget
+   ============================================================ */
+.timer__display {
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: 0.05em;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  padding: var(--space-4) 0;
+}
+
+.timer__controls {
+  display: flex;
+  gap: var(--space-3);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ============================================================
+   To-Do List Widget
+   ============================================================ */
+.todo__add-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.todo__add-row {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.todo__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.todo__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background-color: var(--color-surface-alt);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: background-color var(--transition-fast);
+}
+
+.todo__item:hover {
+  background-color: var(--color-border);
+}
+
+.todo__item--completed .todo__item-text {
+  text-decoration: line-through;
+  color: var(--color-completed-text);
+}
+
+.todo__item-checkbox {
+  flex-shrink: 0;
+  width: 1.1rem;
+  height: 1.1rem;
+  cursor: pointer;
+  accent-color: var(--color-accent);
+}
+
+.todo__item-text {
+  flex: 1;
+  font-size: var(--font-size-base);
+  word-break: break-word;
+}
+
+.todo__item-edit-input {
+  flex: 1;
+  font-size: var(--font-size-base);
+  font-family: var(--font-family);
+  padding: var(--space-1) var(--space-2);
+  border: var(--border-width) solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+}
+
+.todo__item-actions {
+  display: flex;
+  gap: var(--space-1);
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   Quick Links Widget
+   ============================================================ */
+.links__add-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.links__add-fields {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.links__add-fields .input {
+  flex: 1;
+  min-width: 100px;
+}
+
+.links__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.links__item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  background-color: var(--color-surface-alt);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.links__item:hover {
+  background-color: var(--color-border);
+}
+
+.links__item-anchor {
+  color: var(--color-accent);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+.links__item-anchor:hover {
+  text-decoration: underline;
+}
+
+.links__item-anchor:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ============================================================
+   Shared Form Controls
+   ============================================================ */
+.input {
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--font-size-base);
+  font-family: var(--font-family);
+  color: var(--color-text-primary);
+  background-color: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  width: 100%;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.15);
+}
+
+.input::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* ============================================================
+   Buttons
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-size-sm);
+  font-family: var(--font-family);
+  font-weight: 500;
+  border-radius: var(--radius-md);
+  border: var(--border-width) solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), opacity var(--transition-fast);
+  text-decoration: none;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn--primary {
+  background-color: var(--color-accent);
+  color: var(--color-accent-text);
+  border-color: var(--color-accent);
+}
+
+.btn--primary:hover:not(:disabled) {
+  background-color: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+}
+
+.btn--secondary {
+  background-color: var(--color-surface-alt);
+  color: var(--color-text-primary);
+  border-color: var(--color-border);
+}
+
+.btn--secondary:hover:not(:disabled) {
+  background-color: var(--color-border);
+}
+
+.btn--danger {
+  background-color: transparent;
+  color: var(--color-danger);
+  border-color: transparent;
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--font-size-sm);
+}
+
+.btn--danger:hover:not(:disabled) {
+  background-color: var(--color-error-bg);
+  color: var(--color-danger-hover);
+}
+
+.btn--icon {
+  background-color: transparent;
+  color: var(--color-text-secondary);
+  border-color: transparent;
+  padding: var(--space-1) var(--space-2);
+}
+
+.btn--icon:hover:not(:disabled) {
+  background-color: var(--color-surface-alt);
+  color: var(--color-text-primary);
+}
+
+/* ============================================================
+   Error / Inline Messages
+   ============================================================ */
+.error-message {
+  font-size: var(--font-size-sm);
+  color: var(--color-error-text);
+  background-color: var(--color-error-bg);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+  margin-top: var(--space-1);
+}
+
+/* ============================================================
+   Responsive Adjustments
+   ============================================================ */
+@media (max-width: 640px) {
+  .app-header {
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    padding: var(--space-4);
+    gap: var(--space-4);
+  }
+
+  .widget {
+    padding: var(--space-4);
+  }
+
+  .greeting__time,
+  .timer__display {
+    font-size: var(--font-size-2xl);
+  }
+
+  .links__add-fields {
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 1024px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

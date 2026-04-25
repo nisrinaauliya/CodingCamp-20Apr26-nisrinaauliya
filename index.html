@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Life Dashboard</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- Storage unavailable banner -->
+  <div id="storage-banner" class="storage-banner hidden" role="alert" aria-live="polite">
+    Storage unavailable — your data won't be saved.
+  </div>
+
+  <header class="app-header">
+    <h1 class="app-title">Life Dashboard</h1>
+    <!-- Theme toggle control -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light/dark theme" type="button">
+      <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+      <span class="theme-toggle__label">Dark mode</span>
+    </button>
+  </header>
+
+  <main class="dashboard-grid">
+
+    <!-- Greeting Widget -->
+    <section class="widget widget--greeting" aria-labelledby="greeting-heading">
+      <h2 id="greeting-heading" class="widget__title">Greeting</h2>
+      <div class="greeting__time" id="greeting-time" aria-live="polite">00:00</div>
+      <div class="greeting__date" id="greeting-date"></div>
+      <p class="greeting__message" id="greeting-message" aria-live="polite"></p>
+      <form class="greeting__name-form" id="greeting-name-form" novalidate>
+        <label for="greeting-name-input" class="greeting__name-label">Your name</label>
+        <div class="greeting__name-row">
+          <input
+            type="text"
+            id="greeting-name-input"
+            class="input"
+            placeholder="Enter your name"
+            maxlength="50"
+            autocomplete="off"
+          />
+          <button type="submit" class="btn btn--primary">Save</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Focus Timer Widget -->
+    <section class="widget widget--timer" aria-labelledby="timer-heading">
+      <h2 id="timer-heading" class="widget__title">Focus Timer</h2>
+      <div class="timer__display" id="timer-display" aria-live="polite" aria-atomic="true">25:00</div>
+      <div class="timer__controls" role="group" aria-label="Timer controls">
+        <button id="timer-start" class="btn btn--primary" type="button">Start</button>
+        <button id="timer-stop" class="btn btn--secondary" type="button" disabled>Stop</button>
+        <button id="timer-reset" class="btn btn--secondary" type="button">Reset</button>
+      </div>
+    </section>
+
+    <!-- To-Do List Widget -->
+    <section class="widget widget--todo" aria-labelledby="todo-heading">
+      <h2 id="todo-heading" class="widget__title">To-Do List</h2>
+      <form class="todo__add-form" id="todo-add-form" novalidate>
+        <label for="todo-input" class="sr-only">New task description</label>
+        <div class="todo__add-row">
+          <input
+            type="text"
+            id="todo-input"
+            class="input"
+            placeholder="Add a new task…"
+            autocomplete="off"
+          />
+          <button type="submit" class="btn btn--primary">Add</button>
+        </div>
+        <p class="error-message" id="todo-error" aria-live="polite" hidden></p>
+      </form>
+      <ul class="todo__list" id="todo-list" aria-label="Task list"></ul>
+    </section>
+
+    <!-- Quick Links Widget -->
+    <section class="widget widget--links" aria-labelledby="links-heading">
+      <h2 id="links-heading" class="widget__title">Quick Links</h2>
+      <form class="links__add-form" id="links-add-form" novalidate>
+        <div class="links__add-fields">
+          <label for="links-label-input" class="sr-only">Link label</label>
+          <input
+            type="text"
+            id="links-label-input"
+            class="input"
+            placeholder="Label"
+            autocomplete="off"
+          />
+          <label for="links-url-input" class="sr-only">Link URL</label>
+          <input
+            type="url"
+            id="links-url-input"
+            class="input"
+            placeholder="https://example.com"
+            autocomplete="off"
+          />
+          <button type="submit" class="btn btn--primary">Add</button>
+        </div>
+        <p class="error-message" id="links-error" aria-live="polite" hidden></p>
+      </form>
+      <div class="links__list" id="links-list" aria-label="Quick links"></div>
+    </section>
+
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
